@@ -9,8 +9,8 @@ const { open } = require("sqlite");
 const dbPath = path.join(__dirname, "twitterClone.db");
 let db = null;
 const initializeDbAndServer = async ()=>{
-    try{
-        db= await open({
+    try {
+        db = await open({
             filename:dbPath,
             driver:sqlite3.Database,
         });
@@ -53,7 +53,7 @@ const authenticateToken = (request, response, next) =>{
                 response.status(401);
                 response.send("Invalid JWT Token");
             } else {
-                request.username = payLoad.username;
+                request.username = payload.username;
                 request.userId = payload.userId;
                 next();
             }
